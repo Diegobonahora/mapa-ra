@@ -3,28 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa Interactivo de Argentina - RA QR</title>
+  <title>Mapa Interactivo de la Argentina - RA</title>
 
-  <!-- A-Frame + AR.js -->
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
+  <!-- MindAR + A-Frame -->
+  <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.3/dist/mindar-image-aframe.prod.js"></script>
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Mapa Interactivo de Argentina 🇦🇷</h1>
-    <p>Apuntá la cámara al marcador QR para ver la información de las provincias.</p>
-  </header>
+  <div class="overlay">
+    <h1>🗺️ Mapa Interactivo de la Argentina</h1>
+    <p>Apuntá tu cámara al marcador QR para comenzar</p>
+  </div>
 
-  <a-scene embedded arjs="sourceType: webcam;">
-    <!-- Marcador QR -->
-    <a-marker type="pattern" url="./assets/marker.patt" id="markerQR">
-      <!-- Aquí se cargarán los textos de provincias -->
-      <a-entity id="contenedorProvincias"></a-entity>
-    </a-marker>
+  <!-- Escena de realidad aumentada -->
+  <a-scene
+    mindar-image="imageTargetSrc: assets/marcadores/marcador.patt"
+    color-space="sRGB"
+    renderer="colorManagement: true; physicallyCorrectLights"
+    vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: true">
 
-    <a-entity camera></a-entity>
+    <a-assets>
+      <script id="provincia-template" type="text/html">
+        <a-entity position="0 0.3 0" rotation="0 0 0">
+          <a-text value="{{nombre}}" color="#00E5FF" align="center" width="2"></a-text>
+          <a-plane position="0 -0.2 0" width="2" height="1.2" color="#002B5B" opacity="0.9" material="shader: flat;">
+            <a-text value="🌤️ Clima: {{clima}}" position="0 0.35 0" align="center" width="2" color="#FFFFFF"></a-text>
+            <a-text value="🌿 Bioma: {{bioma}}" position="0 0.1 0" align="center" width="2" color="#FFFFFF"></a-text>
+            <a-text value="⭐ Dato: {{dato}}" position="0 -0.15 0" align="center" width="2" color="#FFFFFF"></a-text>
+          </a-plane>
+        </a-entity>
+      </script>
+    </a-assets>
+
+    <a-camera position="0 0 0"></a-camera>
+
+    <a-entity mindar-image-target="targetIndex: 0">
+      <a-entity id="provincia-info"></a-entity>
+    </a-entity>
   </a-scene>
 
   <script src="script.js"></script>
