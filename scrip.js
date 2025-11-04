@@ -1,23 +1,30 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const startBtn = document.getElementById("start-btn");
-  const raContainer = document.getElementById("ra-container");
+document.addEventListener("DOMContentLoaded", async () => {
+  const boton = document.getElementById("btnCamara");
+  const infoBox = document.getElementById("infoBox");
+  const cerrar = document.getElementById("cerrarInfo");
+  const nombre = document.getElementById("provinciaNombre");
+  const info = document.getElementById("provinciaInfo");
 
-  startBtn.addEventListener("click", () => {
-    startBtn.style.display = "none"; // Oculta el botón
-    raContainer.style.display = "block"; // Muestra la escena
+  // Cargar datos desde JSON
+  const provincias = await fetch("assets/data.json").then(r => r.json());
 
-    // Solicitar permiso de cámara (necesario en algunos celulares)
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then((stream) => {
-          console.log("✅ Cámara activada correctamente");
-        })
-        .catch((err) => {
-          alert("❌ Error al acceder a la cámara: " + err.message);
-        });
-    } else {
-      alert("Tu dispositivo no soporta acceso a la cámara.");
-    }
+  // Botón para abrir cámara
+  boton.addEventListener("click", () => {
+    const escena = document.querySelector("a-scene");
+    escena.style.display = "block";
+    boton.style.display = "none";
+  });
+
+  // Detectar clic sobre el mapa
+  const mapa = document.getElementById("mapa");
+  mapa.addEventListener("click", () => {
+    const provincia = provincias[Math.floor(Math.random() * provincias.length)];
+    nombre.textContent = provincia.nombre;
+    info.textContent = provincia.info;
+    infoBox.classList.remove("hidden");
+  });
+
+  cerrar.addEventListener("click", () => {
+    infoBox.classList.add("hidden");
   });
 });

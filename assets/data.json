@@ -1,0 +1,146 @@
+[
+  {
+    "nombre": "Buenos Aires",
+    "clima": "Templado húmedo",
+    "bioma": "Pampa",
+    "caracteristica": "Posee la capital del país y la llanura pampeana"
+  },
+  {
+    "nombre": "Ciudad Autónoma de Buenos Aires",
+    "clima": "Templado húmedo",
+    "bioma": "Urbano",
+    "caracteristica": "Capital del país, centro político y cultural"
+  },
+  {
+    "nombre": "Catamarca",
+    "clima": "Árido de montaña",
+    "bioma": "Monte y prepuna",
+    "caracteristica": "Conocida por sus montañas y paisajes áridos"
+  },
+  {
+    "nombre": "Chaco",
+    "clima": "Subtropical",
+    "bioma": "Bosque chaqueño",
+    "caracteristica": "Posee una gran biodiversidad en su región chaqueña"
+  },
+  {
+    "nombre": "Chubut",
+    "clima": "Frío árido",
+    "bioma": "Estepa patagónica",
+    "caracteristica": "Hogar de la Península Valdés y fauna marina"
+  },
+  {
+    "nombre": "Córdoba",
+    "clima": "Templado serrano",
+    "bioma": "Sierras y pastizales",
+    "caracteristica": "Famosa por sus sierras y el turismo en verano"
+  },
+  {
+    "nombre": "Corrientes",
+    "clima": "Subtropical húmedo",
+    "bioma": "Selva y esteros",
+    "caracteristica": "Conocida por los Esteros del Iberá"
+  },
+  {
+    "nombre": "Entre Ríos",
+    "clima": "Templado húmedo",
+    "bioma": "Bosque y pastizales",
+    "caracteristica": "Rodeada por los ríos Paraná y Uruguay"
+  },
+  {
+    "nombre": "Formosa",
+    "clima": "Subtropical",
+    "bioma": "Bosque chaqueño",
+    "caracteristica": "Región cálida con abundante vegetación"
+  },
+  {
+    "nombre": "Jujuy",
+    "clima": "Altiplánico seco",
+    "bioma": "Puna y yungas",
+    "caracteristica": "Conocida por la Quebrada de Humahuaca"
+  },
+  {
+    "nombre": "La Pampa",
+    "clima": "Templado semiárido",
+    "bioma": "Pampa seca",
+    "caracteristica": "Extensas llanuras y agricultura"
+  },
+  {
+    "nombre": "La Rioja",
+    "clima": "Árido de montaña",
+    "bioma": "Monte y sierras",
+    "caracteristica": "Famosa por el Parque Talampaya"
+  },
+  {
+    "nombre": "Mendoza",
+    "clima": "Árido",
+    "bioma": "Monte y cordillera",
+    "caracteristica": "Principal región vitivinícola del país"
+  },
+  {
+    "nombre": "Misiones",
+    "clima": "Subtropical húmedo",
+    "bioma": "Selva misionera",
+    "caracteristica": "Hogar de las Cataratas del Iguazú"
+  },
+  {
+    "nombre": "Neuquén",
+    "clima": "Frío semiárido",
+    "bioma": "Estepa y cordillera",
+    "caracteristica": "Posee lagos y montañas en la Patagonia norte"
+  },
+  {
+    "nombre": "Río Negro",
+    "clima": "Frío árido",
+    "bioma": "Estepa patagónica",
+    "caracteristica": "Región con valles frutícolas y playas en el Atlántico"
+  },
+  {
+    "nombre": "Salta",
+    "clima": "Tropical de altura",
+    "bioma": "Yungas y puna",
+    "caracteristica": "Famosa por su arquitectura colonial y paisajes"
+  },
+  {
+    "nombre": "San Juan",
+    "clima": "Árido",
+    "bioma": "Monte y cordillera",
+    "caracteristica": "Importante región vitivinícola y minera"
+  },
+  {
+    "nombre": "San Luis",
+    "clima": "Templado semiárido",
+    "bioma": "Sierras y pastizales",
+    "caracteristica": "Conocida por sus paisajes naturales y tranquilidad"
+  },
+  {
+    "nombre": "Santa Cruz",
+    "clima": "Frío árido",
+    "bioma": "Estepa patagónica",
+    "caracteristica": "Hogar del glaciar Perito Moreno"
+  },
+  {
+    "nombre": "Santa Fe",
+    "clima": "Templado húmedo",
+    "bioma": "Llanura pampeana",
+    "caracteristica": "Centro agroindustrial del país"
+  },
+  {
+    "nombre": "Santiago del Estero",
+    "clima": "Cálido semiárido",
+    "bioma": "Monte y bosque chaqueño",
+    "caracteristica": "Provincia más antigua del país"
+  },
+  {
+    "nombre": "Tierra del Fuego",
+    "clima": "Frío oceánico",
+    "bioma": "Bosque subantártico",
+    "caracteristica": "Provincia más austral del país"
+  },
+  {
+    "nombre": "Tucumán",
+    "clima": "Subtropical húmedo",
+    "bioma": "Selva y yungas",
+    "caracteristica": "Cuna de la Independencia Argentina"
+  }
+]
