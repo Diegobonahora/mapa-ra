@@ -1,40 +1,65 @@
+/* Fondo celeste y blanco con la bandera de Argentina */
 body {
   margin: 0;
-  overflow: hidden;
   font-family: Arial, sans-serif;
-  background: #000;
+  background: linear-gradient(to bottom, #74acdf 0%, #ffffff 33%, #ffffff 66%, #74acdf 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
 }
 
-#btnCamara {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+/* Contenedor de bienvenida */
+#bienvenida {
   z-index: 2;
-  padding: 10px 20px;
-  background: #007bff;
-  color: white;
+  padding: 20px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 15px;
+  max-width: 600px;
+}
+
+#bienvenida h1 {
+  color: #0033a0;
+  margin-bottom: 15px;
+}
+
+#bienvenida p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #0033a0;
+}
+
+/* Botón amarillo estilo “sol” */
+#btnCamara {
+  padding: 15px 30px;
+  font-size: 20px;
+  background: #ffdd00;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 50px;
   cursor: pointer;
+  color: #0033a0;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.1s;
 }
 
 #btnCamara:active {
-  background: #0056b3;
+  transform: scale(0.95);
 }
 
+/* InfoBox */
 #infoBox {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.95);
-  color: #000;
-  border-radius: 10px;
-  padding: 15px;
+  color: #0033a0;
+  border-radius: 15px;
+  padding: 20px;
   width: 80%;
-  max-width: 300px;
+  max-width: 350px;
   z-index: 2;
   text-align: center;
 }

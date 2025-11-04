@@ -4,17 +4,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   const cerrar = document.getElementById("cerrarInfo");
   const nombre = document.getElementById("provinciaNombre");
   const info = document.getElementById("provinciaInfo");
+  const arContainer = document.getElementById("arContainer");
+  const bienvenida = document.getElementById("bienvenida");
 
   // Cargar datos desde JSON
   const provincias = await fetch("assets/data.json").then(r => r.json());
 
-  // Botón para abrir cámara
+  // Botón para abrir cámara y generar la escena AR
   boton.addEventListener("click", () => {
-    // Crear la escena AR dinámicamente
+    // Ocultar bienvenida
+    bienvenida.style.display = "none";
+
+    // Crear la escena AR
     const escena = document.createElement("a-scene");
     escena.setAttribute("embedded", "");
     escena.setAttribute("arjs", "sourceType: webcam; debugUIEnabled: false;");
-    document.body.appendChild(escena);
+    arContainer.appendChild(escena);
 
     // Crear el marcador
     const marcador = document.createElement("a-marker");
@@ -35,10 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Crear la cámara
     const camera = document.createElement("a-entity");
     camera.setAttribute("camera", "");
-    marcador.appendChild(camera);
-
-    // Ocultar botón
-    boton.style.display = "none";
+    escena.appendChild(camera);
 
     // Detectar clic sobre el mapa
     mapa.addEventListener("click", () => {
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  // Botón para cerrar infoBox
   cerrar.addEventListener("click", () => {
     infoBox.classList.add("hidden");
   });

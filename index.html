@@ -9,8 +9,15 @@
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
 </head>
 <body>
-  <!-- Botón para activar la cámara -->
-  <button id="btnCamara">Abrir cámara</button>
+  <!-- Página de bienvenida -->
+  <div id="bienvenida">
+    <h1>Mapa Interactivo de Argentina en Realidad Aumentada</h1>
+    <p>
+      ¡Bienvenido! Vas a poder explorar un mapa de Argentina usando tu celular.
+      Apunta la cámara al marcador (imagen) que verás en pantalla y descubre información de cada provincia.
+    </p>
+    <button id="btnCamara">Abrir cámara</button>
+  </div>
 
   <!-- InfoBox para mostrar datos de la provincia -->
   <div id="infoBox" class="hidden">
@@ -19,26 +26,9 @@
     <button id="cerrarInfo">Cerrar</button>
   </div>
 
-  <!-- Escena de A-Frame con AR.js -->
-  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" style="display:none;">
-    <!-- Marcador .patt vinculado a la imagen visible marcador.jpg -->
-    <a-marker type="pattern" url="assets/marcador.patt">
-      <!-- Mapa de Argentina que se superpone al marcador -->
-      <a-plane
-        id="mapa"
-        src="assets/mapa-argentina.jpg"
-        rotation="-90 0 0"
-        width="2"
-        height="2"
-        class="clickable"
-      ></a-plane>
-    </a-marker>
+  <!-- Escena AR se generará dinámicamente -->
+  <div id="arContainer"></div>
 
-    <!-- Cámara de la escena -->
-    <a-entity camera></a-entity>
-  </a-scene>
-
-  <!-- Script JS -->
   <script src="script.js"></script>
 </body>
 </html>
