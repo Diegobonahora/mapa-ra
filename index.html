@@ -3,47 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mapa Interactivo RA Argentina</title>
-
-    <!-- MindAR y A-Frame -->
-    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.0/dist/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.3/dist/mindar-image-aframe.prod.js"></script>
-
-    <link rel="stylesheet" href="style.css" />
+    <title>Mapa RA - Provincias</title>
+    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
-    <header>
-      <h1>🗺️ Mapa Interactivo de Argentina en Realidad Aumentada</h1>
-      <p>Apuntá la cámara al marcador para descubrir información sobre cada provincia.</p>
-    </header>
+  <body style="margin: 0; overflow: hidden;">
+    <button id="openCamera">📷 Abrir cámara</button>
 
-    <main>
-      <!-- Botón para iniciar cámara -->
-      <button id="start-btn">📸 Iniciar Cámara</button>
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
+      arjs="trackingMethod: best; sourceType: webcam;"
+    >
+      <!-- marcador personalizado -->
+      <a-marker type="pattern" url="assets/marcadores/marcador.patt">
+        <a-box position="0 0.5 0" material="color: red;"></a-box>
+      </a-marker>
 
-      <!-- Contenedor donde se insertará la escena RA -->
-      <div id="ra-container" style="display: none;">
-        <a-scene
-          mindar-image="imageTargetSrc: ./assets/marcadores/marcador.mind;"
-          vr-mode-ui="enabled: false"
-          device-orientation-permission-ui="enabled: true"
-          embedded
-        >
-          <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity camera></a-entity>
+    </a-scene>
 
-          <!-- Marcador -->
-          <a-marker type="pattern" url="assets/marcadores/marcador.patt">
-            <a-entity id="info" position="0 0 0"></a-entity>
-          </a-marker>
-        </a-scene>
-      </div>
-    </main>
+    <script>
+      const button = document.getElementById('openCamera');
+      const scene = document.querySelector('a-scene');
 
-    <footer>
-      <p>Proyecto educativo - Técnico en Computación - Escuela Técnica N.º 35</p>
-    </footer>
+      // Ocultar escena hasta que se toque el botón
+      scene.style.display = 'none';
 
-    <script src="script.js"></script>
+      button.addEventListener('click', () => {
+        scene.style.display = 'block';
+        button.style.display = 'none';
+      });
+    </script>
   </body>
 </html>
