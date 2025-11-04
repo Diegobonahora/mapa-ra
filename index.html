@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa Interactivo de la Argentina - RA</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa Interactivo RA Argentina</title>
 
-  <!-- MindAR + A-Frame -->
-  <script src="https://cdn.jsdelivr.net/npm/aframe@1.5.0/dist/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.3/dist/mindar-image-aframe.prod.js"></script>
+    <!-- MindAR y A-Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.0/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.3/dist/mindar-image-aframe.prod.js"></script>
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="overlay">
-    <h1>🗺️ Mapa Interactivo de la Argentina</h1>
-    <p>Apuntá tu cámara al marcador QR para comenzar</p>
-  </div>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <!-- Escena de realidad aumentada -->
-  <a-scene
-    mindar-image="imageTargetSrc: assets/marcadores/marcador.patt"
-    color-space="sRGB"
-    renderer="colorManagement: true; physicallyCorrectLights"
-    vr-mode-ui="enabled: false"
-    device-orientation-permission-ui="enabled: true">
+  <body>
+    <header>
+      <h1>🗺️ Mapa Interactivo de Argentina en Realidad Aumentada</h1>
+      <p>Apuntá la cámara al marcador para descubrir información sobre cada provincia.</p>
+    </header>
 
-    <a-assets>
-      <script id="provincia-template" type="text/html">
-        <a-entity position="0 0.3 0" rotation="0 0 0">
-          <a-text value="{{nombre}}" color="#00E5FF" align="center" width="2"></a-text>
-          <a-plane position="0 -0.2 0" width="2" height="1.2" color="#002B5B" opacity="0.9" material="shader: flat;">
-            <a-text value="🌤️ Clima: {{clima}}" position="0 0.35 0" align="center" width="2" color="#FFFFFF"></a-text>
-            <a-text value="🌿 Bioma: {{bioma}}" position="0 0.1 0" align="center" width="2" color="#FFFFFF"></a-text>
-            <a-text value="⭐ Dato: {{dato}}" position="0 -0.15 0" align="center" width="2" color="#FFFFFF"></a-text>
-          </a-plane>
-        </a-entity>
-      </script>
-    </a-assets>
+    <main>
+      <!-- Botón para iniciar cámara -->
+      <button id="start-btn">📸 Iniciar Cámara</button>
 
-    <a-camera position="0 0 0"></a-camera>
+      <!-- Contenedor donde se insertará la escena RA -->
+      <div id="ra-container" style="display: none;">
+        <a-scene
+          mindar-image="imageTargetSrc: ./assets/marcadores/marcador.mind;"
+          vr-mode-ui="enabled: false"
+          device-orientation-permission-ui="enabled: true"
+          embedded
+        >
+          <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-    <a-entity mindar-image-target="targetIndex: 0">
-      <a-entity id="provincia-info"></a-entity>
-    </a-entity>
-  </a-scene>
+          <!-- Marcador -->
+          <a-marker type="pattern" url="assets/marcadores/marcador.patt">
+            <a-entity id="info" position="0 0 0"></a-entity>
+          </a-marker>
+        </a-scene>
+      </div>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <footer>
+      <p>Proyecto educativo - Técnico en Computación - Escuela Técnica N.º 35</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
