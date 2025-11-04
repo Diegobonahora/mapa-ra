@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Interactivo de Argentina - RA QR</title>
+
+  <!-- A-Frame + AR.js -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mapa Interactivo de Argentina 🇦🇷</h1>
+    <p>Apuntá la cámara al marcador QR para ver la información de las provincias.</p>
+  </header>
+
+  <a-scene embedded arjs="sourceType: webcam;">
+    <!-- Marcador QR -->
+    <a-marker type="pattern" url="./assets/marker.patt" id="markerQR">
+      <!-- Aquí se cargarán los textos de provincias -->
+      <a-entity id="contenedorProvincias"></a-entity>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <script src="script.js"></script>
+</body>
+</html>
