@@ -4,29 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mapa AR - Argentina</title>
-  <link rel="stylesheet" href="style.css" />
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Página de bienvenida -->
-  <div id="bienvenida">
-    <h1>Mapa Interactivo de Argentina en Realidad Aumentada</h1>
-    <p>
-      ¡Bienvenido! Vas a poder explorar un mapa de Argentina usando tu celular.
-      Apunta la cámara al marcador (imagen) que verás en pantalla y descubre información de cada provincia.
-    </p>
-    <button id="btnCamara">Abrir cámara</button>
-  </div>
 
-  <!-- InfoBox para mostrar datos de la provincia -->
+  <button id="btnCamara">Abrir cámara</button>
+
   <div id="infoBox" class="hidden">
     <h2 id="provinciaNombre"></h2>
     <p id="provinciaInfo"></p>
     <button id="cerrarInfo">Cerrar</button>
   </div>
 
-  <!-- Escena AR se generará dinámicamente -->
   <div id="arContainer"></div>
 
   <script src="script.js"></script>
