@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mapa RA - Provincias</title>
+
+    <!-- A-Frame y AR.js -->
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
@@ -13,29 +15,43 @@
     <button id="openCamera">📷 Abrir cámara</button>
 
     <a-scene
-      embedded
       vr-mode-ui="enabled: false"
       renderer="logarithmicDepthBuffer: true;"
       arjs="trackingMethod: best; sourceType: webcam;"
+      id="scene"
     >
-      <!-- marcador personalizado -->
       <a-marker type="pattern" url="assets/marcadores/marcador.patt">
-        <a-box position="0 0.5 0" material="color: red;"></a-box>
+        <a-box position="0 0.5 0" color="#FF4136"></a-box>
       </a-marker>
 
       <a-entity camera></a-entity>
     </a-scene>
 
     <script>
-      const button = document.getElementById('openCamera');
-      const scene = document.querySelector('a-scene');
+      const button = document.getElementById("openCamera");
+      const scene = document.getElementById("scene");
 
-      // Ocultar escena hasta que se toque el botón
-      scene.style.display = 'none';
+      // Pausa la cámara inicialmente
+      scene.renderer = null;
 
-      button.addEventListener('click', () => {
-        scene.style.display = 'block';
-        button.style.display = 'none';
+      button.addEventListener("click", () => {
+        button.style.display = "none";
+
+        // Forzamos reinicio del AR.js
+        const arSystem = scene.systems["arjs"];
+        if (arSystem && arSystem.arToolkitSource && arSystem.arToolkitSource.ready) {
+          arSystem.arToolkitSource.domElement.play();
+        } else {
+          // Si aún no está listo, esperamos un poquito
+          setTimeout(() => {
+            try {
+              scene.renderer = scene.renderer || new THREE.WebGLRenderer({ antialias: true });
+              scene.systems["arjs"].arToolkitSource.domElement.play();
+            } catch (e) {
+              console.error("No se pudo iniciar la cámara:", e);
+            }
+          }, 1000);
+        }
       });
     </script>
   </body>

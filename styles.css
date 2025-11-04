@@ -12,6 +12,9 @@ body {
 }
 
 #openCamera {
+  position: absolute;
+  z-index: 10;
+  top: 40%;
   background-color: #ff5f6d;
   border: none;
   padding: 15px 25px;
