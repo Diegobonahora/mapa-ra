@@ -3,22 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapa AR - Argentina</title>
-  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+  <title>Mapa de Argentina RA</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- A-Frame + AR.js -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
 </head>
+
 <body>
-
-  <button id="btnCamara">Abrir cámara</button>
-
-  <div id="infoBox" class="hidden">
-    <h2 id="provinciaNombre"></h2>
-    <p id="provinciaInfo"></p>
-    <button id="cerrarInfo">Cerrar</button>
+  <!-- Pantalla de bienvenida -->
+  <div id="pantalla-inicio">
+    <h1>Bienvenido al mapa de Argentina con RA</h1>
+    <button id="btn-iniciar">Abrir cámara</button>
   </div>
 
-  <div id="arContainer"></div>
+  <!-- Escena de RA -->
+  <a-scene
+    id="escenaRA"
+    embedded
+    vr-mode-ui="enabled: false"
+    arjs="sourceType: webcam; debugUIEnabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    style="display: none;"
+  >
+    <a-marker type="pattern" url="marcador.patt">
+      <!-- Imagen del mapa -->
+      <a-image
+        src="assets/mapa-argentina.jpg"
+        rotation="-90 0 0"
+        width="3"
+        height="2"
+        position="0 0 0"
+        id="mapa"
+      ></a-image>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <!-- Panel informativo -->
+  <div id="panel-info" class="oculto">
+    <h2 id="provincia-nombre"></h2>
+    <p><strong>Clima:</strong> <span id="provincia-clima"></span></p>
+    <p><strong>Bioma:</strong> <span id="provincia-bioma"></span></p>
+    <p><strong>Característica:</strong> <span id="provincia-caracteristica"></span></p>
+    <button id="cerrar-panel">Cerrar</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
